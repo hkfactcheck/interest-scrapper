@@ -2,13 +2,13 @@
 
 A simple java program to get and scrap interest declaration PDFs.
 
-##Input 
+## Input 
 `out.xlsx`, a spreadsheet file containing links to PDF docs
 
-##Output 
+## Output 
 `out.json`, the serialized json array of scrapped data
 
-##For dev
+## For dev
 Checkout `PageParser.java`. This is an Enum class with each Enum value be instructed to
 1. Recognize a page based on multiple strings
 2. Parse the page and populate the `Declaration` object.
