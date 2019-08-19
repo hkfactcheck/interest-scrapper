@@ -22,3 +22,10 @@ For example, if the below appears in the log
 ``` 
 It means that no parser is configured well enough to recognize page 14. 
 
+## Parsing strategies
+There are mainly 4 types of parsing strategy.
+1. Yes/No checkbox - Extract using nearby text, and check if 有[v] or 否[v] exist.
+2. Table with static left column - Remove line breaks and use regex to extract the right column fields in one go.
+3. Table with both left and right free text column - Use `PDFTableStripper` to find the coordinate of left and right column. Extract and merge text base on coordinates.
+4. Free text - Regex to match the text before and after. 
+
