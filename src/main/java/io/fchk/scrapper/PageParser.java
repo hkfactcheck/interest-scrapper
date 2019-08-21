@@ -126,7 +126,7 @@ public enum PageParser {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
-            Pattern allText = Pattern.compile("公司名請(.*?)如有需要，請影印本頁", Pattern.DOTALL);
+            Pattern allText = Pattern.compile("公司名稱(.*?)如有需要，請影印本頁", Pattern.DOTALL);
             Matcher m = allText.matcher(removeLineBreak(content.getLeft()));
             if (m.find()) {
                 declaration.setQ12FreeText(Strings.nullToEmpty(declaration.getQ12FreeText()) + removeNonWord(m.group(1)));
