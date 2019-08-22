@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 @Slf4j
 public enum PageParser {
 
-    Q11(new String[]{"第1類", "受薪東主、合夥人或董事職位", "你有否擔任公共或私營公司的受薪東主"}) {
+    Q11(new String[][]{{"第1類", "受薪東主、合夥人或董事職位", "你有否擔任公共或私營公司的受薪東主"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -56,7 +56,7 @@ public enum PageParser {
                 declaration.getQ11Table().add(cp);
             }
         }
-    }, Q11_2(new String[]{"詳細資料", "公司名稱", "該公司的業務性質", "若你有更多受薪東主、合夥人或董事職位須登記"}) {
+    }, Q11_2(new String[][]{{"詳細資料", "公司名稱", "該公司的業務性質", "若你有更多受薪東主、合夥人或董事職位須登記"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -85,7 +85,7 @@ public enum PageParser {
                 declaration.getQ11Table().add(cp);
             }
         }
-    }, Q11_3(new String[]{"第1類", "受薪東主、合夥人或董事職位", "續上頁", "如有需要，請影印本頁並在每頁簽署"}) {
+    }, Q11_3(new String[][]{{"第1類", "受薪東主、合夥人或董事職位", "續上頁", "如有需要，請影印本頁並在每頁簽署"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -122,7 +122,7 @@ public enum PageParser {
 
             }
         }
-    }, Q12(new String[]{"第1類", "受薪東主、合夥人或董事職位", "如你在本屆任期內終止擔任任何已登記公司的受薪東主"}) {
+    }, Q12(new String[][]{{"第1類", "受薪東主、合夥人或董事職位", "如你在本屆任期內終止擔任任何已登記公司的受薪東主"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -132,7 +132,7 @@ public enum PageParser {
                 declaration.setQ12FreeText(Strings.nullToEmpty(declaration.getQ12FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q21_1(new String[]{"第2類", "受薪工作及職位等", "你有否從事受薪的工作，包括所有獲得薪金"}) {
+    }, Q21_1(new String[][]{{"第2類", "受薪工作及職位等", "你有否從事受薪的工作，包括所有獲得薪金"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -156,7 +156,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q21_2(new String[]{"第2類", "受薪工作及職位等", "續上頁", "如有需要，請影印本頁並在每頁簽署"}) {
+    }, Q21_2(new String[][]{{"第2類", "受薪工作及職位等", "續上頁", "如有需要，請影印本頁並在每頁簽署"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -170,7 +170,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q22(new String[]{"第2類", "受薪工作及職位等", "如你在本屆任期內終止從事任何已登記的受薪工作"}) {
+    }, Q22(new String[][]{{"第2類", "受薪工作及職位等", "如你在本屆任期內終止從事任何已登記的受薪工作"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -180,7 +180,7 @@ public enum PageParser {
                 declaration.setQ22FreeText(Strings.nullToEmpty(declaration.getQ22FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q31(new String[]{"第3類", "股份", "有否持有任何在香港註冊登記的公司或其他團體的"}) {
+    }, Q31(new String[][]{{"第3類", "股份", "有否持有任何在香港註冊登記的公司或其他團體的"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -204,7 +204,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q31_2(new String[]{"第3類", "股份", "續上頁", "如有需要，請影印本頁並在每頁簽署"}) {
+    }, Q31_2(new String[][]{{"第3類", "股份", "續上頁", "如有需要，請影印本頁並在每頁簽署"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -218,7 +218,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q32(new String[]{"第3類", "股份", "如你在本屆任期內終止擁有或持有任何已登記公司或團體的股份"}) {
+    }, Q32(new String[][]{{"第3類", "股份", "如你在本屆任期內終止擁有或持有任何已登記公司或團體的股份"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -228,7 +228,7 @@ public enum PageParser {
                 declaration.setQ32FreeText(Strings.nullToEmpty(declaration.getQ32FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q4(new String[]{"第4類", "財政贊助", "來自任何人士或組織的財政贊助"}) {
+    }, Q4(new String[][]{{"第4類", "財政贊助", "來自任何人士或組織的財政贊助"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -248,7 +248,7 @@ public enum PageParser {
                 declaration.setQ4FreeText(Strings.nullToEmpty(declaration.getQ4FreeText()) + removeNonWord(m1.group(1)));
             }
         }
-    }, Q5(new String[]{"第5類", "海外訪問", "旅遊的費用並非全數由該議員"}) {
+    }, Q5(new String[][]{{"第5類", "海外訪問", "旅遊的費用並非全數由該議員"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -274,7 +274,7 @@ public enum PageParser {
                 declaration.setQ5Benefit(removeNonWord(m1.group(6)));
             }
         }
-    }, Q6(new String[]{"第6類", "土地及物業", "你在香港是否直接或間接地擁有土地或物業"}) {
+    }, Q6(new String[][]{{"第6類", "土地及物業", "你在香港是否直接或間接地擁有土地或物業"}, {"你在香港是否直接或間接地擁有土地或物業", "議員/委員會成員只須登記所擁有的土地或物業的一般性質"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -294,7 +294,7 @@ public enum PageParser {
                 declaration.setQ6FreeText(Strings.nullToEmpty(declaration.getQ6FreeText()) + removeNonWord(m1.group(1)));
             }
         }
-    }, Q71_1(new String[]{"第7類", "客戶", "委員會成員身分或以任何方式與該身分有關而向客戶"}) {
+    }, Q71_1(new String[][]{{"第7類", "客戶", "委員會成員身分或以任何方式與該身分有關而向客戶"}, {"委員會成員身分或以任何方式與該身分有關而向客戶", "並因此收受該客戶付予的薪金、酬金、津貼或其他實惠"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -318,7 +318,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q71_2(new String[]{"第7類", "客戶", "續上頁", "如有需要，請影印本頁並在每頁簽署"}) {
+    }, Q71_2(new String[][]{{"第7類", "客戶", "續上頁", "如有需要，請影印本頁並在每頁簽署"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -332,7 +332,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q72(new String[]{"第7類", "客戶", "如你在本屆任期內終止了任何在此類別下的已登記的工作"}) {
+    }, Q72(new String[][]{{"第7類", "客戶", "如你在本屆任期內終止了任何在此類別下的已登記的工作"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -342,7 +342,7 @@ public enum PageParser {
                 declaration.setQ72FreeText(Strings.nullToEmpty(declaration.getQ72FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q8_1(new String[]{"第8類", "其他可供申報的利益", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "並把有關文件退回"}) {
+    }, Q8_1(new String[][]{{"第8類", "其他可供申報的利益", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "並把有關文件退回"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -352,7 +352,7 @@ public enum PageParser {
                 declaration.setQ8FreeText(Strings.nullToEmpty(declaration.getQ8FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q8_2(new String[]{"第8類", "其他可供申報的利益", "續上頁", "如有需要，請影印本頁"}) {
+    }, Q8_2(new String[][]{{"第8類", "其他可供申報的利益", "續上頁", "如有需要，請影印本頁"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -362,7 +362,7 @@ public enum PageParser {
                 declaration.setQ8FreeText(Strings.nullToEmpty(declaration.getQ8FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q8_3(new String[]{"第8類", "其他", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "請在下面提供有關詳情"}) {
+    }, Q8_3(new String[][]{{"第8類", "其他", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "請在下面提供有關詳情"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -372,40 +372,43 @@ public enum PageParser {
                 declaration.setQ8FreeText(Strings.nullToEmpty(declaration.getQ8FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, INSTRUCTION_1(new String[]{"填寫登記表格之前，請參閱以下個人利益登記須知。"}) {
+    }, INSTRUCTION_1(new String[][]{{"填寫登記表格之前，請參閱以下個人利益登記須知。"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
         }
-    }, INSTRUCTION_2(new String[]{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}) {
+    }, INSTRUCTION_2(new String[][]{{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}, {""}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
         }
     };
 
-    PageParser(String[] containing) {
+    PageParser(String[][] containing) {
 
         this.containing = containing;
     }
 
 
-    private String[] containing;
+    private String[][] containing;
 
     public abstract void parse(Pair<String, PDDocument> content, Declaration declaration);
 
     public boolean recognize(Pair<String, PDDocument> content) {
-
         String trimmed = removeLineBreak(content.getLeft()).replaceAll(" ", "");
-        for (String s : containing) {
-            if (!trimmed.contains(s)) {
-                return false;
+        for (String[] c : containing) {
+            boolean matched = true;
+            for (String s : c) {
+                if (!trimmed.contains(s)) {
+                    matched = false;
+                }
+            }
+            if (matched) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
-
-    ;
 
     private static String removeLineBreak(String content) {
 
