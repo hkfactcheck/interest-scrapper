@@ -29,3 +29,8 @@ There are mainly 4 types of parsing strategy.
 3. Table with both left and right free text column - Use `PDFTableStripper` to find the coordinate of left and right column. Extract and merge text base on coordinates.
 4. Free text - Regex to match the text before and after. 
 
+## Format json output
+Format json output for easier comparison
+```
+cat out.json | jq '.' > out_formatted.json
+```

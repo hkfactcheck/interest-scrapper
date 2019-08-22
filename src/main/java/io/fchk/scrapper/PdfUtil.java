@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
@@ -113,7 +114,7 @@ public class PdfUtil {
                     continue outerLoop;
                 }
             }
-            log.warn("Unable to find parser for page " + entry.getKey());
+            log.warn("Unable to find parser for page " + entry.getKey() + " value " + StringUtils.substring(entry.getValue().getLeft().replaceAll("(\\n|\\r|\\s)", ""), 0, 300));
         }
         return declaration;
     }
