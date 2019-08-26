@@ -377,7 +377,7 @@ public enum PageParser {
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
         }
-    }, INSTRUCTION_2(new String[][]{{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}, {""}}) {
+    }, INSTRUCTION_2(new String[][]{{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
