@@ -170,7 +170,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q22(new String[][]{{"第2類", "受薪工作及職位等", "如你在本屆任期內終止從事任何已登記的受薪工作"}}) {
+    }, Q22(new String[][]{{"第2類", "受薪工作及職位等", "如你在本屆任期內終止從事任何已登記的受薪工作"}, {"如你在本屆任期內終止從事任何已登記的受薪工作、職位、行業或專業，請在下表列出詳細資料。"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -218,7 +218,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q32(new String[][]{{"第3類", "股份", "如你在本屆任期內終止擁有或持有任何已登記公司或團體的股份"}}) {
+    }, Q32(new String[][]{{"第3類", "股份", "如你在本屆任期內終止擁有或持有任何已登記公司或團體的股份"}, {"如你在本屆任期內終止擁有或持有任何已登記公司或團體的股份，請在下表列出詳細資料。"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -332,7 +332,7 @@ public enum PageParser {
                 log.error(e.getMessage(), e);
             }
         }
-    }, Q72(new String[][]{{"第7類", "客戶", "如你在本屆任期內終止了任何在此類別下的已登記的工作"}}) {
+    }, Q72(new String[][]{{"第7類", "客戶", "如你在本屆任期內終止了任何在此類別下的已登記的工作"}, {"如你在本屆任期內終止了任何在此類別下的已登記的工作，請在下表列出詳細資料"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -342,7 +342,7 @@ public enum PageParser {
                 declaration.setQ72FreeText(Strings.nullToEmpty(declaration.getQ72FreeText()) + removeNonWord(m.group(1)));
             }
         }
-    }, Q8_1(new String[][]{{"第8類", "其他可供申報的利益", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "並把有關文件退回"}}) {
+    }, Q8_1(new String[][]{{"第8類", "其他可供申報的利益", "根據登記個人利益須知所述的目的及兩層申報利益制度指引", "並把有關文件退回"}, {"第8類", "其他可供申報的利益", "根據個人利益登記須知所述的目的及兩層申報利益制度指引", "並把有關文件退回"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
@@ -377,7 +377,22 @@ public enum PageParser {
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
         }
-    }, INSTRUCTION_2(new String[][]{{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}}) {
+    }, INSTRUCTION_2(new String[][]{{"委員會成員應遵從登記個人利益的規定，登記必須登記的個人利益應被視為最低的合理規定"}, {"委員會成員有責任提供所需資料及須對其載錄於登記冊的資料負責"}}) {
+        @Override
+        public void parse(Pair<String, PDDocument> content, Declaration declaration) {
+
+        }
+    }, INSTRUCTION_3(new String[][]{{"公務委員會及管理局成員的利益申報事宜", "兩層申報利益制度指引"}}) {
+        @Override
+        public void parse(Pair<String, PDDocument> content, Declaration declaration) {
+
+        }
+    }, INSTRUCTION_4(new String[][]{{"在會議上申報利益", "如委員會某成員(包括主席)在委員會正予考慮的任何事項中有任何直接個人或金錢利益"}}) {
+        @Override
+        public void parse(Pair<String, PDDocument> content, Declaration declaration) {
+
+        }
+    }, INSTRUCTION_5(new String[][]{{"委員會成員與某機構的友好關係也可能須要申報", "以免客觀的旁觀者認為該成員提出的意見受雙方密切關係所左右"}}) {
         @Override
         public void parse(Pair<String, PDDocument> content, Declaration declaration) {
 
